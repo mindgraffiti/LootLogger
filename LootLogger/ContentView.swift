@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @EnvironmentObject var store: ItemStore
+
     let items = [Item.random, Item.random, Item.random]
     var body: some View {
         NavigationView {
-            List(items) { item in
-                NavigationLink(destination: ItemDetailView(item: item)) {
+            List(store.items) { item in
+                NavigationLink(destination: ItemDetailView(item: item).environmentObject(self.store)) {
                     ItemRow(item: item)
                 }
             }
@@ -23,6 +26,9 @@ struct ContentView: View {
 }
 
 struct ItemRow: View {
+
+    @EnvironmentObject var store: ItemStore
+
     var item: Item
     var body: some View {
         HStack {
@@ -41,6 +47,6 @@ struct ItemRow: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ItemStore())
     }
 }
