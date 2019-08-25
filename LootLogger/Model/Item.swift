@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Item {
+/// 
+///
+class Item: Identifiable {
     var name = ""
     var serial = ""
     var itemValue = ""
