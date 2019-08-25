@@ -9,8 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    let items = [Item.random,
+                 Item.random,
+                 Item.random]
     var body: some View {
-        Text("Hello, 360 iDev")
+        NavigationView {
+            List(items) { item in
+                NavigationLink(destination: Text("destination")) {
+                    ItemRow(item: item)
+                }
+            }.navigationBarTitle("Loot Logger")
+        }
+    }
+}
+
+struct ItemRow: View {
+    var item: Item
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(item.name)
+                    .padding(.bottom, 2)
+                Text(item.serial)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+            Spacer()
+            Text("$\(item.itemValue)")
+        }
     }
 }
 
