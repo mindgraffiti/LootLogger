@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item: Codable, Identifiable {
+class Item: Codable, Decodable, Identifiable {
     var name = ""
     var serial = ""
     var itemValue = ""
