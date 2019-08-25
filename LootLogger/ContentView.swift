@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(items) { item in
-                NavigationLink(destination: Text("destination")) {
+                NavigationLink(destination: ItemDetailView(item: item)) {
                     ItemRow(item: item)
                 }
             }.navigationBarTitle("Loot Logger")
